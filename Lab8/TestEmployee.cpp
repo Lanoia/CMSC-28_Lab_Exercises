@@ -1,17 +1,18 @@
 #include <iostream>
-#include "Student.h"
+#include "Employees.h"
+#include "Person.h"
 #include <string>
 
 void program_intro(){
     std::string border(65, '*');
     std::cout << border << std::endl <<"* Programmed By: Borgy Lance C. Taclindo                        *" << std::endl;
-    std::cout << "* Greetings! Welcome to the Student Information System!         *" << std::endl;
-    std::cout << "* This program allows you to input and display student details. *" << std::endl << border << std::endl;
+    std::cout << "* Greetings! Welcome to the Employee Information System!        *" << std::endl;
+    std::cout << "* This program allows you to input and display employee details.*" << std::endl << border << std::endl;
 }
 
-void student_input(std::string& snum, std::string& fname, std::string& lname, char& s, std::string& email, std::string& cpnum, std::string& course, std::string& dep, std::string& college) {
-    std::cout << "Enter Student Number: ";
-    std::getline(std::cin, snum);
+void employee_input(std::string& empnum, std::string& fname, std::string& lname, char& s, std::string& email, std::string& cpnum, std::string& pos, std::string& off, double& sal) {
+    std::cout << "Enter Employee Number: ";
+    std::getline(std::cin, empnum);
 
     std::cout << "Enter First Name: ";
     std::getline(std::cin, fname);
@@ -19,7 +20,7 @@ void student_input(std::string& snum, std::string& fname, std::string& lname, ch
     std::cout << "Enter Last Name: ";
     std::getline(std::cin, lname);
 
-    std::cout << "Enter Sex(M/F): ";
+    std::cout << "Enter sex(M/F): ";
     std::cin >> s;
     std::cin.ignore();
 
@@ -29,52 +30,53 @@ void student_input(std::string& snum, std::string& fname, std::string& lname, ch
     std::cout << "Enter Contact Number: ";
     std::getline(std::cin, cpnum);
 
-    std::cout << "Enter Course: ";
-    std::getline(std::cin, course);
+    std::cout << "Enter Position: ";
+    std::getline(std::cin, pos);
 
-    std::cout << "Enter Department: ";
-    std::getline(std::cin, dep);
+    std::cout << "Enter Office: ";
+    std::getline(std::cin, off);
 
-    std::cout << "Enter College: ";
-    std::getline(std::cin, college);
+    std::cout << "Enter Salary: ";
+    std::cin >> sal;
+
 }
 
-void setters(Student& s_info, const std::string& snum, const std::string& fname, const std::string& lname, char s, const std::string& email, const std::string& cpnum, const std::string& course, const std::string& dep, const std::string& college) {
+void setters(Employees& e_info, const std::string& empnum, const std::string& fname, const std::string& lname, char s, const std::string& email, const std::string& cpnum, const std::string& pos, const std::string& off, double sal) {
 
-    s_info.setStudentNum(snum);
-    s_info.setFirstName(fname);
-    s_info.setLastName(lname);
-    s_info.setSex(s);
-    s_info.setEmail(email);
-    s_info.setCpNumber(cpnum);
-    s_info.setCourse(course);
-    s_info.setDepartment(dep);
-    s_info.setCollege(college);
+    e_info.setEmployeeNum(empnum);
+    e_info.setFirstName(fname);
+    e_info.setLastName(lname);
+    e_info.setSex(s);
+    e_info.setEmail(email);
+    e_info.setCpNumber(cpnum);
+    e_info.setPosition(pos);
+    e_info.setOffice(off);
+    e_info.setSalary(sal);
 }
 
-void display(Student& s_info) {
+void display(Employees& e_info) {
     std::string border(50, '-');
-    std::cout <<std::endl << border << std::endl << "\t\tStudent Details: " << std::endl << border << std::endl;
-    std::cout << "Student Number: " << s_info.getStudentNum() << std::endl;
-    std::cout << "Name: " << s_info.getFirstName() << " " << s_info.getLastName() << std::endl;
-    std::cout << "Sex: " << s_info.getSex() << std::endl;
-    std::cout << "Email Address: " << s_info.getEmail() << std::endl;
-    std::cout << "Contact Number: " << s_info.getCpNumber() << std::endl;
-    std::cout << "Course: " << s_info.getCourse() << std::endl;
-    std::cout << "Department: " << s_info.getDepartment() << std::endl;
-    std::cout << "College: " << s_info.getCollege() << std::endl << border << std::endl;
-    std::cout << "Hello " << s_info.getFirstName() << "! Welcome to UP Mindanao! We are pleased to inform you that you are admitted in the " << s_info.getCourse() << " program under " << s_info.getDepartment() << ", " << s_info.getCollege() << ". Your student number is " << s_info.getStudentNum() << ".";
+    std::cout <<std::endl << border << std::endl << "\t\tEmployee Details: " << std::endl << border << std::endl;
+    std::cout << "Employee Number: " << e_info.getEmployeeNum() << std::endl;
+    std::cout << "Name: " << e_info.getFirstName() << " " << e_info.getLastName() << std::endl;
+    std::cout << "Sex: " << e_info.getSex() << "(Invalid input)" << std::endl;
+    std::cout << "Email: " << e_info.getEmail() << std::endl;
+    std::cout << "Contact Number: " << e_info.getCpNumber() << std::endl;
+    std::cout << "Position: " << e_info.getPosition() << std::endl;
+    std::cout << "Office: " << e_info.getOffice() << std::endl;
+    std::cout << "Salary: " << e_info.getSalary() << std::endl << border << std::endl;
 }
 
 int main() {
-    std::string fname, lname, studentNum, course, department, college, email, cpnum;
+    std::string fname, lname, empnum, pos, off, email, cpnum;
     char sex;
-    Student s_info;
+    double sal;
+    Employees e_info;
 
     program_intro();
-    student_input(studentNum, fname, lname, sex, email, cpnum, course, department, college);
-    setters(s_info, studentNum, fname, lname, sex, email, cpnum, course, department, college);
-    display(s_info);
+    employee_input(empnum, fname, lname, sex, email, cpnum, pos, off, sal);
+    setters(e_info, empnum, fname, lname, sex, email, cpnum, pos, off, sal);
+    display(e_info);
 
     return 0;
-};
+}

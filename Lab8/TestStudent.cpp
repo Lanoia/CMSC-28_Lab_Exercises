@@ -57,7 +57,7 @@ void display(Student& s_info) {
     std::cout <<std::endl << border << std::endl << "\t\tStudent Details: " << std::endl << border << std::endl;
     std::cout << "Student Number: " << s_info.getStudentNum() << std::endl;
     std::cout << "Name: " << s_info.getFirstName() << " " << s_info.getLastName() << std::endl;
-    std::cout << "Sex: " << s_info.getSex() << std::endl;
+    std::cout << "Sex: " << s_info.getSex() << "(Invalid Input)" << std::endl;
     std::cout << "Email Address: " << s_info.getEmail() << std::endl;
     std::cout << "Contact Number: " << s_info.getCpNumber() << std::endl;
     std::cout << "Course: " << s_info.getCourse() << std::endl;

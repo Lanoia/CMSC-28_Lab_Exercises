@@ -9,7 +9,6 @@ class Employees: public Person{
         std::string employeeNum;
     public:
         std::string position;
-        std::string position;
         std::string office;
         double salary;
 
